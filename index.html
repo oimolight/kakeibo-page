@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家計簿</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>家計簿</h1>
+  </header>
+
+  <main>
+    <section id="input-section">
+      <h2>データ入力</h2>
+      <form id="kakeibo-form">
+        <div>
+          <label for="date">日付</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <div>
+          <label for="item">品目</label>
+          <input type="text" id="item" name="item" placeholder="例：食費" required>
+        </div>
+
+        <fieldset>
+          <legend>収支区分</legend>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" id="type-income" name="type" value="income" required>
+              収入
+            </label>
+            <label class="radio-option">
+              <input type="radio" id="type-expense" name="type" value="expense" checked>
+              支出
+            </label>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="amount">金額（円）</label>
+          <input type="number" id="amount" name="amount" min="0" step="1" placeholder="例：1000" required>
+        </div>
+
+        <button type="submit" id="add-button">追加</button>
+      </form>
+    </section>
+
+    <div class="display-area">
+      <section id="list-section">
+        <h2>一覧</h2>
+        <table id="kakeibo-table">
+          <thead>
+            <tr>
+              <th scope="col">日付</th>
+              <th scope="col">品目</th>
+              <th scope="col">収支区分</th>
+              <th scope="col">金額（円）</th>
+            </tr>
+          </thead>
+          <tbody id="kakeibo-list">
+          </tbody>
+        </table>
+      </section>
+
+      <section id="summary-section">
+        <h2>合計</h2>
+        <dl>
+          <div class="summary-item">
+            <dt>収入合計</dt>
+            <dd><span id="total-income">0</span> 円</dd>
+          </div>
+          <div class="summary-item">
+            <dt>支出合計</dt>
+            <dd><span id="total-expense">0</span> 円</dd>
+          </div>
+          <div class="summary-item summary-total">
+            <dt>合計金額（収入 − 支出）</dt>
+            <dd><span id="total-amount">0</span> 円</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
